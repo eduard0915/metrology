@@ -1,0 +1,249 @@
+{% load static %}
+<!--Sidebar-->
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+<div class="sidebar" data-color="blue" data-image="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/img/sidebar-5.jpg' %}">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="#" class="simple-text logo-mini">
+                BM
+            </a>
+            <a href="{% url 'start:start' %}" class="simple-text logo-normal">
+                BPMPRO METRO
+            </a>
+        </div>
+        <div class="user">
+            <div class="photo">
+                {% if request.user.photo %}
+                    <img src="{{ request.user.photo.url }}" alt="photo_user"/>
+                {% else %}
+                    <img src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/img/default-avatar.png' %}"
+                     alt="photo_user"/>
+                {% endif %}
+            </div>
+            <div class="info ">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>{{ request.user.get_full_name }}<b class="caret"></b></span>
+                </a>
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a class="profile-dropdown" href="{% url 'user:user_profile' request.user.id %}">
+                                <span class="sidebar-mini">MP</span>
+                                <span class="sidebar-normal">Mi Perfil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="profile-dropdown" href="{% url 'user:change_password' %}">
+                                <span class="sidebar-mini">CP</span>
+                                <span class="sidebar-normal">Cambiar Contraseña</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav">
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'start:start' %}">
+                    <i class="nc-icon nc-grid-45"></i>
+                    <p>Inicio</p>
+                </a>
+            </li>
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" data-toggle="collapse" href="#componentsExamples">#}
+{#                    <i class="nc-icon nc-app"></i>#}
+{#                    <p>#}
+{#                        Servicios#}
+{#                        <b class="caret"></b>#}
+{#                    </p>#}
+{#                </a>#}
+{#                <div class="collapse " id="componentsExamples">#}
+{#                    <ul class="nav">#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./components/buttons.html">#}
+{#                                <span class="sidebar-mini">B</span>#}
+{#                                <span class="sidebar-normal">Buttons</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./components/grid.html">#}
+{#                                <span class="sidebar-mini">GS</span>#}
+{#                                <span class="sidebar-normal">Grid System</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./components/panels.html">#}
+{#                                <span class="sidebar-mini">P</span>#}
+{#                                <span class="sidebar-normal">Panels</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./components/sweet-alert.html">#}
+{#                                <span class="sidebar-mini">SA</span>#}
+{#                                <span class="sidebar-normal">Sweet Alert</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./components/notifications.html">#}
+{#                                <span class="sidebar-mini">N</span>#}
+{#                                <span class="sidebar-normal">Notifications</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./components/icons.html">#}
+{#                                <span class="sidebar-mini">I</span>#}
+{#                                <span class="sidebar-normal">Icons</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./components/typography.html">#}
+{#                                <span class="sidebar-mini">T</span>#}
+{#                                <span class="sidebar-normal">Typography</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" data-toggle="collapse" href="#formsExamples">#}
+{#                    <i class="nc-icon nc-notes"></i>#}
+{#                    <p>#}
+{#                        Forms#}
+{#                        <b class="caret"></b>#}
+{#                    </p>#}
+{#                </a>#}
+{#                <div class="collapse " id="formsExamples">#}
+{#                    <ul class="nav">#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./forms/regular.html">#}
+{#                                <span class="sidebar-mini">Rf</span>#}
+{#                                <span class="sidebar-normal">Regular Forms</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./forms/extended.html">#}
+{#                                <span class="sidebar-mini">Ef</span>#}
+{#                                <span class="sidebar-normal">Extended Forms</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./forms/validation.html">#}
+{#                                <span class="sidebar-mini">Vf</span>#}
+{#                                <span class="sidebar-normal">Validation Forms</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./forms/wizard.html">#}
+{#                                <span class="sidebar-mini">W</span>#}
+{#                                <span class="sidebar-normal">Wizard</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" data-toggle="collapse" href="#tablesExamples">#}
+{#                    <i class="nc-icon nc-paper-2"></i>#}
+{#                    <p>#}
+{#                        Tables#}
+{#                        <b class="caret"></b>#}
+{#                    </p>#}
+{#                </a>#}
+{#                <div class="collapse " id="tablesExamples">#}
+{#                    <ul class="nav">#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./tables/regular.html">#}
+{#                                <span class="sidebar-mini">RT</span>#}
+{#                                <span class="sidebar-normal">Regular Tables</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./tables/extended.html">#}
+{#                                <span class="sidebar-mini">ET</span>#}
+{#                                <span class="sidebar-normal">Extended Tables</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./tables/bootstrap-table.html">#}
+{#                                <span class="sidebar-mini">BT</span>#}
+{#                                <span class="sidebar-normal">Bootstrap Table</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./tables/datatables.net.html">#}
+{#                                <span class="sidebar-mini">DT</span>#}
+{#                                <span class="sidebar-normal">DataTables.net</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li class="nav-item">#}
+{#                <a class="nav-link" data-toggle="collapse" href="#mapsExamples">#}
+{#                    <i class="nc-icon nc-pin-3"></i>#}
+{#                    <p>#}
+{#                        Maps#}
+{#                        <b class="caret"></b>#}
+{#                    </p>#}
+{#                </a>#}
+{#                <div class="collapse " id="mapsExamples">#}
+{#                    <ul class="nav">#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./maps/google.html">#}
+{#                                <span class="sidebar-mini">GM</span>#}
+{#                                <span class="sidebar-normal">Google Maps</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./maps/vector.html">#}
+{#                                <span class="sidebar-mini">VM</span>#}
+{#                                <span class="sidebar-normal">Vector maps</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                        <li class="nav-item ">#}
+{#                            <a class="nav-link" href="./maps/fullscreen.html">#}
+{#                                <span class="sidebar-mini">FSM</span>#}
+{#                                <span class="sidebar-normal">Full Screen Map</span>#}
+{#                            </a>#}
+{#                        </li>#}
+{#                    </ul>#}
+{#                </div>#}
+{#            </li>#}
+{#            <li class="nav-item ">#}
+{#                <a class="nav-link" href="./charts.html">#}
+{#                    <i class="nc-icon nc-chart-bar-32"></i>#}
+{#                    <p>Charts</p>#}
+{#                </a>#}
+{#            </li>#}
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
+                    <i class="nc-icon nc-single-02"></i>
+                    <p>
+                        Usuarios
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse " id="pagesExamples">
+                    <ul class="nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'user:user_list' %}">
+                                <span class="sidebar-mini">LU</span>
+                                <span class="sidebar-normal">Lista Usuarios</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'user:user_create' %}">
+                                <span class="sidebar-mini">CU</span>
+                                <span class="sidebar-normal">Crear Usuario</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

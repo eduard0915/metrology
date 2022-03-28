@@ -1,0 +1,86 @@
+{% extends 'body.html' %}
+{% load static %}
+
+{% block head %}
+
+{#    <script src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/js/core/jquery.3.2.1.min.js' %}"></script>#}
+{#    <script src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/js/plugins/jquery.dataTables.min.js' %}"></script>#}
+
+    {% block head_list %}
+
+    {% endblock %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card data-tables">
+                <div class="card-header">
+                    <ul class="nav">
+                        <h4 class="card-title">{{ entity }}</h4>
+                        <li class="nav-item">
+                            {% block new_create %}
+
+                            {% endblock %}
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body table-striped table-no-bordered table-hover dataTable dtr-inline table-full-width">
+                    <div class="toolbar">
+                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                    </div>
+                    <div class="fresh-datatables">
+                        <table id="data" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                            <thead>
+                                {% block columns %}
+
+                                {% endblock %}
+                            </thead>
+                            <tfoot>
+                                {% block columns_foot %}
+
+                                {% endblock %}
+                            </tfoot>
+                            <tbody>
+                                {% block rows %}
+
+                                {% endblock %}
+                            </tbody>
+                        </table>
+                    </div><!--  end card-body -->
+                </div>
+
+            </div>
+        </div> <!-- end col-md-12 -->
+    </div> <!-- end row -->
+{% endblock %}
+
+{% block javascript %}
+    <script type="application/javascript">
+        $(function () {
+            $('#data').DataTable({
+                responsive: true,
+                autoWidth: false,
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
+                },
+            });
+
+            $('.btnTest').on('click', function () {
+                $.ajax({
+                    url: window.location.pathname,
+                    type: 'POST',
+                    data: {id: 1},
+                    dataType: 'json'
+                }).done(function (data) {
+                    console.log(data);
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus + ': ' + errorThrown);
+                }).always(function (data) {
+                });
+            });
+        });
+    </script>
+{% endblock %}

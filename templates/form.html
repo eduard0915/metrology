@@ -1,0 +1,103 @@
+{% extends 'body.html' %}
+{% load static %}
+
+
+{% block head %}
+    <script src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/js/core/jquery.3.2.1.min.js' %}"></script>
+    <script src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/js/plugins/moment.min.js' %}"></script>
+    <script src="{% static 'lib/moment-es/es.js' %}"></script>
+    <script src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/js/plugins/bootstrap-datetimepicker.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <form enctype="multipart/form-data" method="post" action="" class="form-horizontal">
+                <div class="card ">
+                    <div class="card-header ">
+                        <h4 class="card-title">{{ entity }}</h4>
+                    </div>
+                    <div class="card-body ">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="{{ action }}">
+                        {% for field in form.visible_fields %}
+                            {% if forloop.first %}
+                                <div class="row">
+                            {% endif %}
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for=id_{{ field.name }}>
+                                    {{ field.label }}
+                                </label>
+                                {% if field.help_text %}
+                                    <sub>*{{ field.help_text }}</sub>
+                                {% endif %}
+                                {{ field }}
+                            </div>
+                        </div>
+                        {% if forloop.last %}
+                        {% elif forloop.counter|divisibleby:3 %}
+                            </div>
+                            <div class="row">
+                        {% endif %}
+                        {% endfor %}
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-fill btn-success"><i class="nc-icon nc-check-2"></i>
+                                Guardar
+                            </button>
+                            <a href="{{ list_url }}" class="btn btn-fill btn-danger"><i
+                                    class="nc-icon nc-simple-remove"></i>
+                                Cancelar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $('form').on('submit', function (e) {
+            e.preventDefault();
+            var parameters = new FormData(this);
+            $.ajax({
+                url: window.location.pathname,
+                type: 'POST',
+                data: parameters,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+            }).done(function (data) {
+                console.log(data);
+                if (!data.hasOwnProperty('error')) {
+                    location.href = '{{ list_url }}';
+                    return false;
+                }
+                message_error(data.error);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus + ': ' + errorThrown);
+            }).always(function (data) {
+            });
+        });
+
+        $('#date_birth').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: 'es',
+            defaultDate: $('.date_birth'),
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove',
+            },
+        });
+
+    </script>
+{% endblock %}

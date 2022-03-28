@@ -1,0 +1,132 @@
+{% extends 'body.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="section-image" data-image="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/img/bg5.jpg' %}">
+        <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6">
+                    <div class="card ">
+                            <div class="card-header ">
+                                <div class="card-header">
+                                    <h4 class="card-title">{{ entity }}</h4>
+                                </div>
+                            </div>
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-md-4 pr-1">
+                                        <label>N° Identificación</label><p>{{ object.cedula }}</p>
+                                    </div>
+                                    <div class="col-md-4 px-1">
+                                        <label>Usuario</label><p>{{ object.username }}</p>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <label>E-mail</label><p>{{ object.email }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pr-1">
+                                        <label>Nombres</label><p>{{ object.first_name }}</p>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <label>Apellidos</label><p>{{ object.last_name }}</p>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                        <label>Cargo</label><p>{{ object.cargo }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Dirección</label>
+                                        <p>
+                                            {% if object.address_user == None %}
+                                                No Registrado
+                                            {% else %}
+                                                {{ object.address_user }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 pr-1">
+                                        <label>Fecha de Nacimiento</label>
+                                        <p>
+                                            {% if object.date_birth == None %}
+                                                No Registrado
+                                            {% else %}
+                                                {{ object.date_birth }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 px-1">
+                                        <label>E-mail Personal</label>
+                                        <p>
+                                            {% if object.email_person == None %}
+                                                No Registrado
+                                            {% else %}
+                                                {{ object.email_person }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 pl-1">
+                                       <label>Celular</label><p>{{ object.cellphone }}</p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-user">
+                        <div class="card-header no-padding">
+                            <div class="card-image">
+                                {% if user.photo %}
+                                    <img src="{{ user.photo.url }}" alt="user_profile">
+                                {% else %}
+                                    <img src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/img/full-screen-image-3.jpg' %}" alt="user_profile">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-body ">
+                            <div class="author">
+                                <a href="#">
+                                    <img class="avatar border-gray" src="{% static 'lib/light-bootstrap-dashboard-pro-html-v2.0.1/img/default-avatar.png' %}" alt="user_photo">
+                                    <h5 class="card-title">{{ object.get_full_name }}</h5>
+                                </a>
+                                <p class="card-description">
+                                    {{ object.cargo }}
+                                </p>
+                                {% if object.is_active == True %}
+                                    <p class="card-description" style="color: green; font-weight: bold">Activo</p>
+                                {% else %}
+                                    <p class="card-description" style="color: red; font-weight: bold">Inactivo</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="card-footer ">
+                            <hr>
+                            <div class="button-container text-center">
+                                {% if entity == 'Mi Perfil' %}
+                                    <a href="{% url 'user:user_profile_update' object.id %}"
+                                       class="btn btn-info btn-fill pull-center">Editar Perfil</a>
+                                {% else %}
+                                    <a href="{% url 'user:user_update' object.id %}"
+                                       class="btn btn-info btn-fill pull-center">Editar Perfil</a>
+                                {% endif %}
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
