@@ -1,0 +1,38 @@
+{% extends 'list.html' %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static 'list_client.js' %}"></script>
+{% endblock %}
+
+{% block columns %}
+    <tr>
+        <th class="text-md-center" style="width:22%">Nombre Cliente</th>
+        <th class="text-md-center" style="width:10%">Nit</th>
+        <th class="text-md-center" style="width:22%">Dirección</th>
+        <th class="text-md-center" style="width:16%">Telefóno</th>
+        <th class="text-md-center" style="width:15%">Email</th>
+        <th class="text-md-center" style="width:10%">Estado</th>
+        <th class="disabled-sorting text-right" style="width:5%">Acciones</th>
+    </tr>
+{% endblock %}
+{% block columns_foot %}
+    <tr>
+        <th class="text-md-center" style="width:22%">Nombre Cliente</th>
+        <th class="text-md-center" style="width:10%">NIT</th>
+        <th class="text-md-center" style="width:22%">Dirección</th>
+        <th class="text-md-center" style="width:16%">Telefóno</th>
+        <th class="text-md-center" style="width:15%">Email</th>
+        <th class="text-md-center" style="width:10%">Estado</th>
+        <th class="disabled-sorting text-right" style="width:5%">Acciones</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+
+{% block javascript %}
+
+
+{% endblock %}

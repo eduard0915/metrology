@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'core.start',
     'core.login',
     'core.user',
+    'core.client',
 ]
 
 MIDDLEWARE = [
