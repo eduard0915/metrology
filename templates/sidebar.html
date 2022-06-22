@@ -54,27 +54,27 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse">
-                    <i class="nc-icon nc-app"></i>
+                <a class="nav-link" data-toggle="collapse" href="#clients">
+                    <i class="nc-icon nc-badge"></i>
                     <p>
                         Clientes
                         <b class="caret"></b>
                     </p>
                 </a>
-{#                <div class="collapse " id="componentsExamples">#}
-{#                    <ul class="nav">#}
-{#                        <li class="nav-item ">#}
-{#                            <a class="nav-link" href="./components/buttons.html">#}
-{#                                <span class="sidebar-mini">B</span>#}
-{#                                <span class="sidebar-normal">Buttons</span>#}
-{#                            </a>#}
-{#                        </li>#}
-{#                        <li class="nav-item ">#}
-{#                            <a class="nav-link" href="./components/grid.html">#}
-{#                                <span class="sidebar-mini">GS</span>#}
-{#                                <span class="sidebar-normal">Grid System</span>#}
-{#                            </a>#}
-{#                        </li>#}
+                <div class="collapse " id="clients">
+                    <ul class="nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'client:client_list' %}">
+                                <span class="sidebar-mini">LC</span>
+                                <span class="sidebar-normal">Listado Clientes</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'client:client_create' %}">
+                                <span class="sidebar-mini">NC</span>
+                                <span class="sidebar-normal">Nuevo Cliente</span>
+                            </a>
+                        </li>
 {#                        <li class="nav-item ">#}
 {#                            <a class="nav-link" href="./components/panels.html">#}
 {#                                <span class="sidebar-mini">P</span>#}
@@ -105,8 +105,8 @@
 {#                                <span class="sidebar-normal">Typography</span>#}
 {#                            </a>#}
 {#                        </li>#}
-{#                    </ul>#}
-{#                </div>#}
+                    </ul>
+                </div>
             </li>
 {#            <li class="nav-item">#}
 {#                <a class="nav-link" data-toggle="collapse" href="#formsExamples">#}

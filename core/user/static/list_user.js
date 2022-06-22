@@ -32,7 +32,7 @@ $(function ()  {
                 class: 'td-actions text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    return '<a href="/user/update-password/' + row.id + '/" type="button" rel="tooltip" class="btn btn-link btn-warning edit"><i class="fa fa-edit"></i></a>';
+                    return '<a href="/user/update-password/' + row.id + '/" type="button" rel="tooltip" class="btn btn-link btn-warning"><i class="fa fa-edit"></i></a>';
                 }
             },
             {
@@ -40,7 +40,7 @@ $(function ()  {
                 class: 'td-actions text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    return '<a href="/user/detail/' + row.id + '/" type="button" rel="tooltip" class="btn btn-link btn-info table-action view"><i class="fa fa-image"></i></a>';
+                    return '<a href="/user/detail/' + row.id + '/" type="button" rel="tooltip" class="btn btn-link btn-info"><i class="fa fa-info-circle"></i></a>';
                 }
             },
             {
